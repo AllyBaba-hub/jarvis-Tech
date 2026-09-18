@@ -25,7 +25,32 @@
 
 body{
     background:var(--bg);
-    padding:40px 20px;
+    padding:20px;
+}
+
+/* TOP NAVIGATION / BACK BUTTON */
+.nav-bar{
+    max-width:900px;
+    margin:0 auto 20px auto;
+    display:flex;
+    justify-content:flex-start;
+}
+
+.back-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:var(--primary);
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14px;
+    transition:background 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn:hover{
+    background:var(--accent);
+    transform:translateY(-2px);
 }
 
 .container{
@@ -34,6 +59,7 @@ body{
     background:white;
     padding:60px;
     box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    border-radius:12px;
 }
 
 /* HEADER */
@@ -111,7 +137,21 @@ li{
     font-weight:600;
 }
 
-/* MOBILE */
+/* PRINT & MOBILE STYLES */
+@media print{
+    .nav-bar{
+        display:none; /* Hides back button when printing/saving to PDF */
+    }
+    body{
+        padding:0;
+        background:white;
+    }
+    .container{
+        box-shadow:none;
+        padding:0;
+    }
+}
+
 @media(max-width:768px){
     .header{
         flex-direction:column-reverse;
@@ -124,6 +164,11 @@ li{
 
 <body>
 
+<!-- BACK BUTTON -->
+<div class="nav-bar">
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+</div>
+
 <div class="container">
 
     <!-- HEADER -->
@@ -131,12 +176,11 @@ li{
         <div class="header-text">
             <h1>BUGINGO ALLY BABA</h1>
             <div class="section">
-    <h2>Professional Summary</h2>
-    <div class="item">
-        Motivated Web Developer and IT Specialist focused on building fast, secure and scalable digital solutions. Passionate about clean code, performance optimization and delivering real business impact.
-    </div>
-</div>
-
+                <h2>Professional Summary</h2>
+                <div class="item">
+                    Motivated Web Developer and IT Specialist focused on building fast, secure and scalable digital solutions. Passionate about clean code, performance optimization and delivering real business impact.
+                </div>
+            </div>
 
             <div class="contact">
                 Kigali, Rwanda<br>
@@ -147,7 +191,6 @@ li{
 
         <img src="image_0.jpg" alt="Bugingo Ally Baba" class="photo">
     </div>
-
 
     <!-- EDUCATION -->
     <div class="section">
@@ -163,25 +206,22 @@ li{
             Advanced Level Certificate – Mathematics, Chemistry, Biology
         </div>
 
-        
         <div class="item">
             <strong>Muhabura Integrated Polytechnic College, Musanze</strong> (2022)<br>
             Studied Software Development (Briefly attended before changing combination)
         </div>
-
     </div>
 
     <!-- SKILLS -->
-   <div class="section">
-    <h2>Technical Skills</h2>
-    <ul>
-        <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
-        <li><strong>Programming:</strong> C Language</li>
-        <li><strong>Tools:</strong> Git, GitHub, VS Code</li>
-        <li><strong>Deployment:</strong> Vercel</li>
-    </ul>
-</div>
-
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
+            <li><strong>Programming:</strong> C Language</li>
+            <li><strong>Tools:</strong> Git, GitHub, VS Code</li>
+            <li><strong>Deployment:</strong> Vercel</li>
+        </ul>
+    </div>
 
     <!-- LANGUAGES -->
     <div class="section">
@@ -208,8 +248,8 @@ li{
         <h2>Projects & Activities</h2>
         <ul>
             <li><strong>Jarvis Smart Home Assistant</strong> – Self-initiated automation and voice control project</li>
-            <strong>Isoko Web</strong> – Designed and developed a fully responsive digital platform deployed on Vercel.
-             <strong>Abouba's shop</strong> – Designed and developed a fully responsive digital marketplace platform.
+            <li><strong>Isoko Web</strong> – Designed and developed a fully responsive digital platform deployed on Vercel.</li>
+            <li><strong>Abouba's shop</strong> – Designed and developed a fully responsive digital marketplace platform.</li>
             <li>Workshops Facilitator – Organized seminars on conflict resolution and social responsibility</li>
             <li>Technology Blogger – Writes about programming and innovation</li>
             <li>Gaming & Programming – Personal hobbies that enhance creativity and logic</li>
@@ -223,20 +263,18 @@ li{
             <li>Co-Founder of Peace and Love Proclaimers (PLP) at ES Gisenyi & ES Kidaho</li>
             <li>Led peace-building campaigns and awareness events in school communities</li>
             <li><strong>Isoko Web</strong> – Designed and developed a fully responsive marketplace platform deployed on Vercel.</li>
-
         </ul>
     </div>
 
     <!-- REFERENCES -->
     <div class="section">
-    <h2>References</h2>
-    <div class="item">
-        Available upon request.
+        <h2>References</h2>
+        <div class="item">
+            Available upon request.
+        </div>
     </div>
-</div>
 
 </div>
 
 </body>
 </html>
-
