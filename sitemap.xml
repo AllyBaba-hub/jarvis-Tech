@@ -3,7 +3,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://yourdomain.com/</loc>
+    <loc>https://jarvis-tech-psi.vercel.app/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Resume Page -->
   <url>
-    <loc>https://yourdomain.com/resume.html</loc>
+    <loc>https://jarvis-tech-psi.vercel.app/resume.html</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
