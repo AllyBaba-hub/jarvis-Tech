@@ -127,29 +127,39 @@ main{
     border-radius: 18px;
     padding: 20px;
     border: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
 }
 
-/* Protected Image Container */
+/* Scrollable Protected Container for Both Pages */
 .cert-image-wrapper {
-    position: relative;
     width: 100%;
     max-height: 850px;
     overflow-y: auto;
     border-radius: 10px;
-    background: #ffffff;
+    background: #0b1220;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
     user-select: none;
     -webkit-user-select: none;
+}
+
+.page-label{
+    color: var(--dim);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .cert-image-wrapper img {
     width: 100%;
     height: auto;
     display: block;
-    pointer-events: none; /* Prevents dragging */
+    border-radius: 6px;
+    background: #ffffff;
+    pointer-events: none; /* Prevents image dragging */
 }
 
 .details-card{
@@ -233,11 +243,14 @@ footer{
     </div>
 
     <div class="cert-grid">
-        <!-- Displayed Certificate Image Frame -->
+        <!-- Displayed Certificate Images -->
         <div class="viewer-card">
-            <div class="cert-image-wrapper" oncontextmenu="return false;">
-                <!-- Save your converted PDF as 'certificate-Opkodex-LTD.png' or '.jpg' -->
-                <img src="certificate-Opkodex-LTD.png" alt="RDB Certificate - Opkodex LTD" id="certImg">
+            <div class="cert-image-wrapper" id="certWrapper">
+                <div class="page-label">Page 1 — Domestic Company Registration</div>
+                <img src="certificate-Opkodex-LTD.png" alt="RDB Certificate Page 1 - Opkodex LTD" class="cert-img">
+                
+                <div class="page-label">Page 2 — Tax & Compliance Obligations</div>
+                <img src="certificate-Opkodex-LTD-2.png" alt="RDB Certificate Page 2 - Compliance Obligations" class="cert-img">
             </div>
         </div>
 
@@ -271,13 +284,13 @@ footer{
             </div>
 
             <div class="info-group">
-                <label>Registered Office</label>
-                <span>Rubavu, Iburengerazuba, Gisenyi, Rwanda</span>
+                <label>Registered Office Address</label>
+                <span>Ituze, Bugoyi, Gisenyi, Rubavu, Iburengerazuba, Rwanda</span>
             </div>
 
             <div class="info-group">
-                <label>Primary Activity</label>
-                <span>Software Development, Web Pages, Database & System Applications (SJ620101)</span>
+                <label>Main Business Activity</label>
+                <span>Designing structure/content and writing computer code for systems, applications, databases & web pages (SJ620101)</span>
             </div>
 
             <div class="info-group">
@@ -299,9 +312,9 @@ footer{
     © 2026 BUGINGO Ally Baba | Opkodex LTD | Kigali, Rwanda
 </footer>
 
-<!-- Script to disable right click on image to prevent basic saving -->
+<!-- Script to disable right-click context menu on images -->
 <script>
-    document.getElementById('certImg').addEventListener('contextmenu', event => event.preventDefault());
+    document.getElementById('certWrapper').addEventListener('contextmenu', event => event.preventDefault());
 </script>
 
 </body>
