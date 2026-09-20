@@ -21,14 +21,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+/* CSS VARIABLES FOR DARK MODE (DEFAULT) */
 :root{
     --primary:#38bdf8;
     --accent:#facc15;
     --dark:#0b1220;
+    --bg-gradient: linear-gradient(to bottom, #0b1220, #0f172a);
     --card:#111827;
+    --price-card:#0f172a;
+    --nav-bg: rgba(11,18,32,0.9);
+    --nav-border: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.05);
     --text:#e5e7eb;
     --dim:#9ca3af;
     --success:#22c55e;
+}
+
+/* LIGHT MODE OVERRIDES */
+body.light-mode {
+    --primary:#0284c7;
+    --accent:#d97706;
+    --dark:#ffffff;
+    --bg-gradient: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+    --card:#ffffff;
+    --price-card:#ffffff;
+    --nav-bg: rgba(255,255,255,0.9);
+    --nav-border: rgba(0,0,0,0.1);
+    --card-border: rgba(0,0,0,0.08);
+    --text:#0f172a;
+    --dim:#475569;
+    --success:#16a34a;
 }
 
 *{
@@ -41,23 +63,25 @@
 html{scroll-behavior:smooth;}
 
 body{
-    background:linear-gradient(to bottom, #0b1220, #0f172a);
+    background:var(--bg-gradient);
     color:var(--text);
     line-height:1.7;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* NAVIGATION */
 nav{
     position:sticky;
     top:0;
-    background:rgba(11,18,32,0.9);
+    background:var(--nav-bg);
     backdrop-filter:blur(12px);
     padding:18px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid var(--nav-border);
     z-index:1000;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .logo{
@@ -66,10 +90,15 @@ nav{
     color:var(--primary);
 }
 
+.nav-links{
+    display:flex;
+    align-items:center;
+}
+
 .nav-links a{
     text-decoration:none;
     color:var(--text);
-    margin-left:28px;
+    margin-left:24px;
     font-weight:600;
     font-size:14px;
     transition:.3s;
@@ -82,6 +111,27 @@ nav{
     color:#000!important;
     padding:8px 16px;
     border-radius:8px;
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle{
+    background:transparent;
+    border:1px solid var(--primary);
+    color:var(--text);
+    padding:6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+    margin-left:24px;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.theme-toggle:hover{
+    background:var(--primary);
+    color:#000;
 }
 
 /* HERO */
@@ -124,7 +174,7 @@ header{
 
 .primary-btn{
     background:var(--primary);
-    color:#000;
+    color:#fff;
 }
 
 .secondary-btn{
@@ -140,7 +190,7 @@ header{
 .profile-img{
     width:240px;
     border-radius:20px;
-    box-shadow:0 25px 60px rgba(0,0,0,0.6);
+    box-shadow:0 25px 60px rgba(0,0,0,0.3);
 }
 
 /* SECTIONS */
@@ -173,12 +223,13 @@ section h2{
     padding:30px;
     border-radius:18px;
     transition:.3s;
-    border:1px solid rgba(255,255,255,0.05);
+    border:1px solid var(--card-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .card:hover{
     transform:translateY(-10px);
-    border-color:rgba(56,189,248,0.3);
+    border-color:var(--primary);
 }
 
 .card h3{
@@ -217,12 +268,13 @@ section h2{
 }
 
 .price-box{
-    background:#0f172a;
+    background:var(--price-card);
     padding:40px;
     border-radius:18px;
-    border:1px solid rgba(56,189,248,0.2);
+    border:1px solid var(--card-border);
     text-align:center;
     transition:.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .price-box:hover{
@@ -275,7 +327,7 @@ footer{
     padding:50px 8%;
     font-size:14px;
     color:var(--dim);
-    border-top:1px solid rgba(255,255,255,0.05);
+    border-top:1px solid var(--card-border);
 }
 
 .card{
@@ -300,6 +352,13 @@ footer{
         flex-direction:column;
     }
     .hero-text h1{font-size:36px;}
+    .nav-links{
+        flex-wrap:wrap;
+        gap:10px;
+    }
+    .nav-links a, .theme-toggle{
+        margin-left:10px;
+    }
 }
 </style>
 </head>
@@ -312,8 +371,14 @@ footer{
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#pricing">Pricing</a>
+        <a href="irembo-services.html">Irembo Support</a>
         <a href="certificate.html">RDB Certificate</a>
         <a href="resume.html" class="resume-btn">Resume</a>
+        
+        <!-- LIGHT/DARK MODE TOGGLE BUTTON -->
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+            🌙 <span id="themeText">Dark</span>
+        </button>
     </div>
 </nav>
 
@@ -327,6 +392,7 @@ footer{
         </p>
         <div class="hero-buttons">
             <a href="#contact" class="primary-btn">Start a Project</a>
+            <a href="irembo-services.html" class="secondary-btn">Irembo Services</a>
             <a href="resume.html" class="secondary-btn">View Resume</a>
             <a href="certificate.html" class="secondary-btn">RDB Certificate</a>
         </div>
@@ -436,6 +502,33 @@ Together, let us build a safe society that nurtures every child</h3>
 <footer>
     © 2026 BUGINGO Ally Baba | Web Developer | Kigali, Rwanda
 </footer>
+
+<!-- LIGHT / DARK MODE SCRIPT -->
+<script>
+function toggleTheme() {
+    const body = document.body;
+    const themeBtn = document.getElementById('themeBtn');
+    
+    body.classList.toggle('light-mode');
+    
+    if (body.classList.contains('light-mode')) {
+        themeBtn.innerHTML = '☀️ Light';
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeBtn.innerHTML = '🌙 Dark';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// REMEMBER USER'S THEME PREFERENCE
+window.onload = function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        document.getElementById('themeBtn').innerHTML = '☀️ Light';
+    }
+};
+</script>
 
 </body>
 </html>
