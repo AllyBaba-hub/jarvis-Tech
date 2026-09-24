@@ -37,20 +37,67 @@
     --success:#22c55e;
 }
 
-/* LIGHT MODE OVERRIDES */
+/* UNIVERSAL LIGHT MODE OVERRIDES */
 body.light-mode {
-    --primary:#0284c7;
-    --accent:#d97706;
-    --dark:#ffffff;
-    --bg-gradient: linear-gradient(to bottom, #f8fafc, #e2e8f0);
-    --card:#ffffff;
-    --price-card:#ffffff;
-    --nav-bg: rgba(255,255,255,0.9);
-    --nav-border: rgba(0,0,0,0.1);
-    --card-border: rgba(0,0,0,0.08);
-    --text:#0f172a;
-    --dim:#475569;
-    --success:#16a34a;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    color: #0f172a !important;
+}
+
+body.light-mode .container,
+body.light-mode .card,
+body.light-mode .form-container,
+body.light-mode .price-box,
+body.light-mode .service-card {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode h1, 
+body.light-mode h2, 
+body.light-mode h3, 
+body.light-mode strong,
+body.light-mode .item strong {
+    color: #0f172a !important;
+}
+
+body.light-mode p, 
+body.light-mode li, 
+body.light-mode .contact, 
+body.light-mode .item,
+body.light-mode label {
+    color: #334155 !important;
+}
+
+body.light-mode nav {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.light-mode nav a {
+    color: #0f172a !important;
+}
+
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* TOGGLE BUTTON STYLING */
+.theme-toggle {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: inherit;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
 }
 /* LIGHT MODE COLORS */
 body.light-mode {
