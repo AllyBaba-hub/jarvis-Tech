@@ -1,31 +1,28 @@
-// Function to apply the saved theme on load
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const themeBtns = document.querySelectorAll('.theme-toggle');
-
-    if (savedTheme === 'light') {
+// Function to apply theme settings
+function applyTheme(theme) {
+    if (theme === 'light') {
         document.body.classList.add('light-mode');
-        themeBtns.forEach(btn => btn.innerHTML = '☀️ Light');
     } else {
         document.body.classList.remove('light-mode');
-        themeBtns.forEach(btn => btn.innerHTML = '🌙 Dark');
     }
+
+    // Update button text across all toggle buttons on the page
+    const themeBtns = document.querySelectorAll('.theme-toggle');
+    themeBtns.forEach(btn => {
+        btn.innerHTML = (theme === 'light') ? '☀️ Light' : '🌙 Dark';
+    });
 }
 
-// Function triggered when clicking the theme button
+// Function to switch theme when clicking the button
 function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    const themeBtns = document.querySelectorAll('.theme-toggle');
-
-    if (isLight) {
-        localStorage.setItem('theme', 'light');
-        themeBtns.forEach(btn => btn.innerHTML = '☀️ Light');
-    } else {
-        localStorage.setItem('theme', 'dark');
-        themeBtns.forEach(btn => btn.innerHTML = '🌙 Dark');
-    }
+    const isLight = document.body.classList.toggle('light-mode');
+    const newTheme = isLight ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
 }
 
 // Run immediately when page loads
-document.addEventListener('DOMContentLoaded', initTheme);
+(function init() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    applyTheme(savedTheme);
+})();
