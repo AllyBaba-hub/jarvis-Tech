@@ -24,11 +24,12 @@
 }
 /* UNIVERSAL LIGHT MODE OVERRIDES */
 body.light-mode {
-    background-color: #ffffff !important;
-    background-image: none !important;
+    background: #ffffff !important;
     color: #0f172a !important;
 }
 
+body.light-mode header,
+body.light-mode section,
 body.light-mode .container,
 body.light-mode .card,
 body.light-mode .form-container,
@@ -36,28 +37,27 @@ body.light-mode .price-box,
 body.light-mode .service-card {
     background-color: #ffffff !important;
     color: #0f172a !important;
-    border-color: #e2e8f0 !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+    border-color: #cbd5e1 !important;
 }
 
 body.light-mode h1, 
 body.light-mode h2, 
 body.light-mode h3, 
+body.light-mode h4,
 body.light-mode strong,
-body.light-mode .item strong {
+body.light-mode a {
     color: #0f172a !important;
 }
 
 body.light-mode p, 
 body.light-mode li, 
-body.light-mode .contact, 
-body.light-mode .item,
-body.light-mode label {
+body.light-mode label,
+body.light-mode .item {
     color: #334155 !important;
 }
 
 body.light-mode nav {
-    background-color: rgba(255, 255, 255, 0.95) !important;
+    background: #ffffff !important;
     border-bottom: 1px solid #e2e8f0 !important;
 }
 
@@ -65,14 +65,16 @@ body.light-mode nav a {
     color: #0f172a !important;
 }
 
-body.light-mode input,
-body.light-mode select,
-body.light-mode textarea {
-    background-color: #f8fafc !important;
-    color: #0f172a !important;
-    border-color: #cbd5e1 !important;
+.theme-toggle {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: inherit;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
 }
-
 /* TOGGLE BUTTON STYLING */
 .theme-toggle {
     background: transparent;
